@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const usersV1 = require("../../routes/v1/users")
+const usersV1 = require("../V1/routes/users")
 module.exports = function (app) {
     app.use(express.json());
     app.use(function (err,req, res, next) {
