@@ -1,0 +1,184 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "BASIC API Specification",
+    "version": "1.0.0",
+    "description": "This is the BASIC API Specification"
+  },
+  "host": "localhost:8080",
+  "servers": [
+    {
+      "url": "http://localhost:8080/"
+    },
+    {
+      "url": "https://cdndemo-api.co-vin.in/"
+    }
+  ],
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/v1/user/getAllUsers": {
+      "get": {
+        "tags":[  
+          "User"
+        ],
+        "description":"Get All Users",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/user/getUserById/{userId}": {
+      "get": {
+        "tags":[  
+          "User"
+        ],
+        "description":"Get User by specified User ID",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/user/saveUser": {
+      "post": {
+        "tags":[  
+          "User"
+        ],
+        "description":"Save User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/SaveUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/user/updateUser": {
+      "post": {
+        "tags":[  
+          "User"
+        ],
+        "description":"Update User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/UpdateUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/v1/user/deleteUser": {
+      "post": {
+        "tags":[  
+          "User"
+        ],
+        "description": "Delete User by User ID",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/DeleteUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SaveUser": {
+      "type": "object",
+      "properties": {
+        "user_name": {"type": "string", "example": "Sudhir"},
+        "gender": {"type": "string", "example": "Male"},
+        "age": {"type": "number", "example": 18}
+      }
+    },
+    "UpdateUser": {
+      "type": "object",
+      "properties": {
+        "user_id": {"type": "number", "example": 1},
+        "user_name": {"type": "string", "example": "Sudhir"},
+        "gender": {"type": "string", "example": "Male"},
+        "age": {"type": "number", "example": 18}
+      }
+    },
+    "DeleteUser": {
+      "type": "object",
+      "properties": {
+        "user_id": {"type": "number", "example": 1}
+      }
+    }
+  },
+  "security": [
+    {
+      "secret_key": []
+    }
+  ]
+}
